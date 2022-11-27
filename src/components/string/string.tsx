@@ -7,6 +7,8 @@ import { Circle } from "../ui/circle/circle";
 import { ElementStates } from "../../types/element-states";
 import {delay} from "../../utils/utils";
 import {ICircle} from "../../types/types";
+import {swap} from "./utils";
+import {DELAY_IN_MS} from "../../constants/delays";
 
 export const StringComponent: React.FC = () => {
 
@@ -16,14 +18,6 @@ export const StringComponent: React.FC = () => {
 
     const handleInputChange = (event: React.FormEvent<HTMLInputElement>) => {
         setInputValue(event.currentTarget.value);
-    };
-
-    const swap = (
-        arr: ICircle[],
-        firstIndex: number,
-        secondIndex: number
-    ): void => {
-        [arr[firstIndex], arr[secondIndex]] = [arr[secondIndex], arr[firstIndex]];
     };
 
     const reverseString = async (value: string) => {
@@ -40,7 +34,7 @@ export const StringComponent: React.FC = () => {
             array.push({ value: el, state: ElementStates.Default });
         });
         setArray([...array]);
-        await delay(1000);
+        await delay(DELAY_IN_MS);
         for (let arr = array, start = 0, end = arr.length - 1; end >= start; start++, end--) {
             if (end === start) {
                 array[start].state = ElementStates.Modified;

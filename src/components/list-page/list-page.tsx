@@ -4,12 +4,12 @@ import styles from "./list-page.module.css";
 import {Input} from "../ui/input/input";
 import {Button} from "../ui/button/button";
 import {ElementStates} from "../../types/element-states";
-import {ICircle} from "../../types/types";
 import {Circle} from "../ui/circle/circle";
 import {ArrowIcon} from "../ui/icons/arrow-icon";
 import {HEAD, TAIL} from "../../constants/element-captions";
 import {delay} from "../../utils/utils";
 import {SHORT_DELAY_IN_MS} from "../../constants/delays";
+import {defaultArray, LinkedList} from "./utils";
 
 export const ListPage: React.FC = () => {
   const [inputValues, setInputValues] = useState({ value: '', index: '' });
@@ -23,131 +23,6 @@ export const ListPage: React.FC = () => {
   const onInputChange = (event: ChangeEvent<HTMLInputElement>) => {
     setInputValues({ ...inputValues, [event.target.name]: event.target.value });
   };
-
-  const defaultArray = [
-    { value: '0', state: ElementStates.Default },
-    { value: '34', state: ElementStates.Default },
-    { value: '8', state: ElementStates.Default },
-    { value: '1', state: ElementStates.Default }
-  ]
-
-  class Node {
-    element: ICircle;
-    next: Node | null;
-
-    constructor(item: ICircle, next: Node | null = null) {
-      this.element = item;
-      this.next = next;
-    }
-  }
-
-  class LinkedList {
-    array: Node[] = [];
-    head: Node | null = null;
-    tail: Node | null = null;
-
-    constructor(items: ICircle[]) {
-      items.forEach(item => {
-        this.append(item);
-      });
-    }
-
-    append(item: ICircle) {
-      const node = new Node(item);
-      this.array.push(node);
-      if (!this.tail) {
-        this.head = node;
-        this.tail = node;
-      } else {
-        this.tail.next = node;
-        this.tail = node;
-      }
-    }
-
-    prepend(item: ICircle) {
-      const node = new Node(item);
-      this.array.unshift(node);
-      if (!this.head) {
-        this.head = node;
-        this.tail = node;
-      } else {
-        node.next = this.head;
-        this.head = node;
-      }
-    }
-
-    addByIndex(index: number, item: ICircle) {
-      const node = new Node(item);
-      if (this.array[index] === this.head) {
-        node.next = this.head;
-        this.head = node;
-      }
-
-      this.array.splice(index, 0, node);
-    }
-
-    deleteHead() {
-      if (!this.head || this.head === this.tail) {
-        this.head = null;
-        this.tail = null;
-        this.array = [];
-      } else {
-        this.head = this.head?.next;
-        this.array.shift();
-      }
-    }
-
-    deleteTail() {
-      if (!this.head || this.head === this.tail) {
-        this.head = null;
-        this.tail = null;
-        this.array = [];
-      } else {
-        let current = this.head;
-        while (current.next) {
-          if (!current.next.next) {
-            current.next = null;
-          } else {
-            current = current.next;
-          }
-        }
-        this.tail = current;
-        this.array.pop();
-      }
-    }
-
-    deleteByIndex(index: number) {
-      if (!this.head || this.head === this.tail) {
-        this.head = null;
-        this.tail = null;
-        this.array = [];
-        return;
-      }
-
-      if (this.array[index] === this.head) {
-        this.deleteHead();
-      } else if (this.array[index] === this.tail) {
-        this.deleteTail();
-      } else {
-        this.array.splice(index, 1);
-      }
-    }
-
-    changeState(index: number, state: ElementStates) {
-      this.array[index].element.state = state;
-    }
-
-    changeValue(index: number, value: string = '') {
-      this.array[index].element.value = value;
-    }
-
-    getData() {
-      const array = this.array;
-      const tail = this.tail;
-      const head = this.head;
-      return { array, tail, head }
-    }
-  }
 
   const linkedList = React.useRef(new LinkedList(defaultArray));
   const data = linkedList.current.getData();
@@ -218,7 +93,6 @@ export const ListPage: React.FC = () => {
     setDisabled(false);
     setAddLoader({ ...addLoader, index: false });
   }
-
 
   const deleteTail = async () => {
     setDisabled(true);
@@ -337,9 +211,8 @@ export const ListPage: React.FC = () => {
           {data.array &&
             data.array.map((item, index) => {
               return (
-                  <>
+                  <React.Fragment key={index}>
                     <Circle
-                        key={index}
                         letter={String(item.element.value)}
                         index={index}
                         state={item.element.state}
@@ -353,7 +226,7 @@ export const ListPage: React.FC = () => {
                     {index !== linkedList.current.array.length - 1 && (
                         <ArrowIcon />
                     )}
-                  </>
+                  </React.Fragment>
               )
             })
          }

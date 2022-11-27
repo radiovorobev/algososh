@@ -8,6 +8,7 @@ import {ElementStates} from "../../types/element-states";
 import {Column} from "../ui/column/column";
 import {delay} from "../../utils/utils";
 import {IArray, ISortingState} from "../../types/types";
+import {randomArray, swap} from "./utils";
 
 export const SortingPage: React.FC = () => {
 
@@ -20,21 +21,14 @@ export const SortingPage: React.FC = () => {
         isAscending: false
     });
 
-    const randomArray = () => {
-        const size = Math.random() * (17 - 3) + 3;
-        const arr: IArray[] = Array.from({ length: size }, () => ({
-            number: Math.floor(Math.random() * 100) + 1,
-            state: ElementStates.Default,
-        }))
+    React.useEffect(() => {
+        const arr = randomArray();
         setArray([...arr]);
-    }
+    }, []);
 
-    const swap = (
-        arr: IArray[],
-        firstIndex: number,
-        secondIndex: number
-    ): void => {
-        [arr[firstIndex], arr[secondIndex]] = [arr[secondIndex], arr[firstIndex]];
+    const newArray = (event: React.FormEvent<HTMLButtonElement>) => {
+        const arr = randomArray();
+        setArray([...arr]);
     };
 
     const selectionSort = async (
@@ -194,7 +188,7 @@ export const SortingPage: React.FC = () => {
         />
         <Button
             text={'Новый массив'}
-            onClick={randomArray}
+            onClick={newArray}
             disabled={inProcess}
         />
       </div>

@@ -6,31 +6,7 @@ import styles from "./stack-page.module.css";
 import {Circle} from "../ui/circle/circle";
 import {delay} from "../../utils/utils";
 import {ElementStates} from "../../types/element-states";
-import {ICircle, IStack} from "../../types/types";
-
-class Stack implements IStack<ICircle> {
-    private array: ICircle[] = [];
-
-    push(item: ICircle) {
-        this.array.push(item);
-    }
-
-    pop() {
-        this.array.pop();
-    }
-
-    reset() {
-        this.array = [];
-    }
-
-    changeState(index: number, state: ElementStates) {
-        this.array[index].state = state;
-    }
-
-    getData() {
-        return this.array
-    }
-}
+import {Stack} from "./utils";
 
 export const StackPage: React.FC = () => {
     const [disableButton, setDisableButton] = React.useState(true);

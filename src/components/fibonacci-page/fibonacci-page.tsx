@@ -5,6 +5,7 @@ import {Input} from "../ui/input/input";
 import {Button} from "../ui/button/button";
 import {Circle} from "../ui/circle/circle";
 import {delay} from "../../utils/utils";
+import {fibAlgorithm} from "./utils";
 
 export const FibonacciPage: React.FC = () => {
     const [inputValue, setInputValue] = useState<number>(0);
@@ -13,17 +14,6 @@ export const FibonacciPage: React.FC = () => {
 
     const handleInputChange = (e: React.FormEvent<HTMLInputElement>) => {
         setInputValue(+e.currentTarget.value)
-    }
-
-    const fibAlgorithm = (n: number, memo: Record<number, number> = {}): number => {
-        if (n in memo) {
-            return memo[n];
-        }
-        if (n <= 2) {
-            return 1;
-        }
-        memo[n] = fibAlgorithm(n - 1, memo) + fibAlgorithm(n - 2, memo);
-        return memo[n];
     }
 
     const getFib = async () => {
