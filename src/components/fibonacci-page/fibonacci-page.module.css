@@ -1,0 +1,19 @@
+.formContainer {
+  margin: 0 auto 74px;
+  width: 522px;
+  display: flex;
+  flex-direction: row;
+  gap: 12px;
+}
+
+.circlesContainer {
+  margin: 0 auto;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  width: fit-content;
+  gap: 12px;
+  row-gap: 48px;
+  max-width: 944px;
+  list-style-type: none;
+}

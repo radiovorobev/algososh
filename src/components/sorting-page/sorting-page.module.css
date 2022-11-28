@@ -1,0 +1,27 @@
+.buttonsContainer {
+  display: flex;
+  flex-direction: row;
+  justify-items: center;
+  justify-content: center;
+  width: 924px;
+  margin: 0 auto;
+}
+
+.radioInput {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.columnList {
+  width: 944px;
+  list-style-type: none;
+  margin: 48px auto 0;
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+  align-content: flex-start;
+  column-gap: 16px;
+  row-gap: 48px;
+
+}

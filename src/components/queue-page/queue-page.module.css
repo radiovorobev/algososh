@@ -1,0 +1,16 @@
+.formContainer {
+  margin: 0 auto 48px;
+  width: 829px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.circlesContainer {
+  margin: 0 auto;
+  display: flex;
+  flex-direction: row;
+  width: fit-content;
+  gap: 12px;
+}

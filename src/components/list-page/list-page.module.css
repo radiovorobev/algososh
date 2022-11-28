@@ -1,0 +1,28 @@
+.formContainer {
+  margin: 0 auto 90px;
+  width: 952px;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  gap: 12px;
+  justify-content: space-between;
+}
+
+.circlesContainer {
+  margin: 0 auto;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  width: fit-content;
+  align-items: center;
+  row-gap: 36px;
+  column-gap: 12px;
+}
+
+.inputWidth {
+  width: 204px;
+}
+
+.buttonWidth {
+  width: 362px;
+}
