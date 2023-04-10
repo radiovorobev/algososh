@@ -9,6 +9,7 @@ import {Column} from "../ui/column/column";
 import {delay} from "../../utils/utils";
 import {IArray, ISortingState} from "../../types/types";
 import {randomArray, swap} from "./utils";
+import {SHORT_DELAY_IN_MS} from "../../constants/delays";
 
 export const SortingPage: React.FC = () => {
 
@@ -49,7 +50,7 @@ export const SortingPage: React.FC = () => {
             for (let n = i + 1; n < arr.length; n++) {
                 arr[n].state = ElementStates.Changing;
                 setArray([...arr]);
-                await delay(500);
+                await delay(SHORT_DELAY_IN_MS);
                 if (
                     (sortingOption === "ascending"
                         ? arr[swapInd].number
@@ -60,26 +61,26 @@ export const SortingPage: React.FC = () => {
                         i === swapInd ? ElementStates.Changing : ElementStates.Default;
                     swapInd = n;
                     setArray([...arr]);
-                    await delay(500);
+                    await delay(SHORT_DELAY_IN_MS);
                 }
                 if (n !== swapInd) {
                     arr[n].state = ElementStates.Default;
                     setArray([...arr]);
-                    await delay(500);
+                    await delay(SHORT_DELAY_IN_MS);
                 }
             }
             if (i === swapInd) {
                 arr[i].state = ElementStates.Modified;
                 setArray([...arr]);
-                await delay(500);
+                await delay(SHORT_DELAY_IN_MS);
             } else {
                 swap(arr, swapInd, i);
                 arr[i].state = ElementStates.Modified;
                 setArray([...arr]);
-                await delay(500);
+                await delay(SHORT_DELAY_IN_MS);
                 arr[swapInd].state = ElementStates.Default;
                 setArray([...arr]);
-                await delay(500);
+                await delay(SHORT_DELAY_IN_MS);
             }
         }
         arr.forEach((el) => (el.state = ElementStates.Modified));
@@ -106,7 +107,7 @@ export const SortingPage: React.FC = () => {
                 arr[n].state = ElementStates.Changing;
                 arr[n + 1].state = ElementStates.Changing;
                 setArray([...arr]);
-                await delay(500);
+                await delay(SHORT_DELAY_IN_MS);
 
                 if (
                     (sortingOption === "ascending" ? arr[n].number : arr[n + 1].number) >
@@ -114,7 +115,7 @@ export const SortingPage: React.FC = () => {
                 ) {
                     swap(arr, n, n + 1);
                     setArray([...arr]);
-                    await delay(500);
+                    await delay(SHORT_DELAY_IN_MS);
                 }
                 arr[n].state = ElementStates.Default;
                 arr[n + 1].state = ElementStates.Default;
@@ -122,7 +123,7 @@ export const SortingPage: React.FC = () => {
                     arr[n + 1].state = ElementStates.Modified;
                 }
                 setArray([...arr]);
-                await delay(500);
+                await delay(SHORT_DELAY_IN_MS);
             }
         }
         arr.forEach((el) => (el.state = ElementStates.Modified));
@@ -142,6 +143,7 @@ export const SortingPage: React.FC = () => {
             onChange={() => setSorting("selection")}
             value="selection"
             disabled={inProcess}
+            data-testid='radioInputSelect'
         />
         <RadioInput
             label={'Пузырёк'}
@@ -150,6 +152,7 @@ export const SortingPage: React.FC = () => {
             onChange={() => setSorting("bubble")}
             value="bubble"
             disabled={inProcess}
+            data-testid='radioInputBubble'
         />
         <Button
             extraClass={`mr-6`}
@@ -167,6 +170,7 @@ export const SortingPage: React.FC = () => {
                         "ascending",
                         array
                     )}
+            data-testid='buttonAsc'
         />
         <Button
             extraClass={`mr-40`}
@@ -185,16 +189,18 @@ export const SortingPage: React.FC = () => {
                         array
                     )
             }
+            data-testid='buttonDesc'
         />
         <Button
             text={'Новый массив'}
             onClick={newArray}
             disabled={inProcess}
+            data-testid='buttonNewArray'
         />
       </div>
-        <ul className={styles.columnList}>
+        <ul className={styles.columnList} data-testid="columnContainer">
             {array.map((column, i) => {
-                return <Column index={column.number} state={column.state} key={i} />
+                return <Column index={column.number} state={column.state} key={i} data-testid='column' />
             })}
         </ul>
     </SolutionLayout>

@@ -64,14 +64,14 @@ export const StringComponent: React.FC = () => {
   return (
     <SolutionLayout title="Строка">
         <div className={styles.formContainer}>
-            <Input isLimitText={true} maxLength={11} onChange={handleInputChange} />
-            <Button text={'Развернуть'} disabled={!inputValue} onClick={handleClick} isLoader={loader}/>
+            <Input isLimitText={true} maxLength={11} onChange={handleInputChange} data-testid='input' value={inputValue}/>
+            <Button text={'Развернуть'} disabled={!inputValue} onClick={handleClick} isLoader={loader} data-testid='button'/>
         </div>
         <div className={styles.circlesContainer}>
             {
                 resultArray &&
                 resultArray.map((data: ICircle, index: number) => {
-                    return <Circle letter={data.value} state={data.state} key={index}/> }
+                    return <Circle letter={data.value} state={data.state} key={index} data-testid='circle'/> }
                 )
             }
         </div>
