@@ -1,4 +1,4 @@
-import renderer from 'react-test-renderer';
+import renderer from "react-test-renderer";
 import {Button} from "./button";
 import {screen, fireEvent, render} from "@testing-library/react";
 
