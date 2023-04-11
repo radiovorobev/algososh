@@ -71,17 +71,20 @@ export const StackPage: React.FC = () => {
               text={'Добавить'}
               disabled={disableButton}
               onClick={() => addElement(value)}
+              data-testid='addButton'
           />
           <Button
               text={'Удалить'}
               extraClass={'mr-40'}
               disabled={!array.length}
               onClick={() => deleteElement()}
+              data-testid='deleteButton'
           />
           <Button
               text={'Очистить'}
               disabled={!array.length}
               onClick={reset}
+              data-testid='clearButton'
           />
         </div>
         <div className={styles.circlesContainer}>
