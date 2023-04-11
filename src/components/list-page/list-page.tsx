@@ -163,26 +163,31 @@ export const ListPage: React.FC = () => {
             name="value"
             disabled={disabled}
             value={inputValues.value}
+            data-testid='textInput'
         />
         <Button text={'Добавить в head'}
                 onClick={() => addHead(inputValues.value)}
                 disabled={disabled ? true : !inputValues.value}
                 isLoader={addLoader.head}
+                data-testid='addHeadButton'
         />
         <Button text={'Добавить в tail'}
                 onClick={() => addTail(inputValues.value)}
                 disabled={disabled ? true : !inputValues.value}
                 isLoader={addLoader.tail}
+                data-testid='addTailButton'
         />
         <Button text={'Удалить из head'}
                 onClick={deleteHead}
                 disabled={disabled ? true : data.array.length <= 0}
                 isLoader={deleteLoader.head}
+                data-testid='deleteHeadButton'
         />
         <Button text={'Удалить из tail'}
                 onClick={deleteTail}
                 disabled={disabled ? true : data.array.length <= 0}
                 isLoader={deleteLoader.tail}
+                data-testid='deleteTailButton'
         />
           <Input
               placeholder={'Введите индекс'}
@@ -193,18 +198,21 @@ export const ListPage: React.FC = () => {
               max={data.array.length - 1}
               disabled={disabled}
               value={inputValues.index}
+              data-testid='indexInput'
           />
           <Button text={'Добавить по индексу'}
                   extraClass={`${styles.buttonWidth}`}
                   onClick={() => addByIndex(Number(inputValues.index), inputValues.value)}
                   disabled={disabled ? true : !(inputValues.index && data.array.length > Number(inputValues.index) && inputValues.value)}
                   isLoader={addLoader.index}
+                  data-testid='addIndexButton'
           />
           <Button text={'Удалить по индексу'}
                   extraClass={`${styles.buttonWidth}`}
                   onClick={() => deleteByIndex(Number(inputValues.index))}
                   disabled={disabled ? true : !(inputValues.index && data.array.length > Number(inputValues.index))}
                   isLoader={deleteLoader.index}
+                  data-testid='deleteIndexButton'
           />
       </div>
         <div className={styles.circlesContainer}>
