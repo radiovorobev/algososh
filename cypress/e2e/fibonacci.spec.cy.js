@@ -1,7 +1,7 @@
 import { SHORT_DELAY_IN_MS } from "../../src/constants/delays";
 const circle = "[data-testid='circle']";
 describe("page loaded correctly", function () {
-	before(function () {
+	beforeEach(function () {
 		cy.visit('http://localhost:3000/fibonacci');
 	});
 
@@ -11,7 +11,6 @@ describe("page loaded correctly", function () {
 	})
 
 	it('algorithm works ok', () => {
-		cy.visit('http://localhost:3000/fibonacci');
 		cy.get('input').clear();
 		cy.get('input').type('3').should('have.value', '3');
 		cy.get('button').contains('Раccчитать').click();
