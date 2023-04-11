@@ -9,6 +9,7 @@ exports[`Circle test OK Circle Changing OK 1`] = `
   />
   <div
     className="circle   changing"
+    data-testid="circle"
   >
     <p
       className="text text_type_circle text_color_input letter"
@@ -32,6 +33,7 @@ exports[`Circle test OK Circle Default OK 1`] = `
   />
   <div
     className="circle   default"
+    data-testid="circle"
   >
     <p
       className="text text_type_circle text_color_input letter"
@@ -55,6 +57,7 @@ exports[`Circle test OK Circle Modified OK 1`] = `
   />
   <div
     className="circle   modified"
+    data-testid="circle"
   >
     <p
       className="text text_type_circle text_color_input letter"
@@ -78,6 +81,7 @@ exports[`Circle test OK Circle w/o letter OK 1`] = `
   />
   <div
     className="circle   default"
+    data-testid="circle"
   >
     <p
       className="text text_type_circle text_color_input letter"
@@ -107,6 +111,7 @@ exports[`Circle test OK Circle with React-head OK 1`] = `
       />
       <div
         className="circle   default"
+        data-testid="circle"
       >
         <p
           className="text text_type_circle text_color_input letter"
@@ -122,6 +127,7 @@ exports[`Circle test OK Circle with React-head OK 1`] = `
   </div>
   <div
     className="circle   default"
+    data-testid="circle"
   >
     <p
       className="text text_type_circle text_color_input letter"
@@ -145,6 +151,7 @@ exports[`Circle test OK Circle with React-tail OK 1`] = `
   />
   <div
     className="circle   default"
+    data-testid="circle"
   >
     <p
       className="text text_type_circle text_color_input letter"
@@ -164,6 +171,7 @@ exports[`Circle test OK Circle with React-tail OK 1`] = `
       />
       <div
         className="circle   default"
+        data-testid="circle"
       >
         <p
           className="text text_type_circle text_color_input letter"
@@ -191,6 +199,7 @@ exports[`Circle test OK Circle with head OK 1`] = `
   </div>
   <div
     className="circle   default"
+    data-testid="circle"
   >
     <p
       className="text text_type_circle text_color_input letter"
@@ -214,6 +223,7 @@ exports[`Circle test OK Circle with index OK 1`] = `
   />
   <div
     className="circle   default"
+    data-testid="circle"
   >
     <p
       className="text text_type_circle text_color_input letter"
@@ -239,6 +249,7 @@ exports[`Circle test OK Circle with letters OK 1`] = `
   />
   <div
     className="circle   default"
+    data-testid="circle"
   >
     <p
       className="text text_type_circle text_color_input letter"
@@ -264,6 +275,7 @@ exports[`Circle test OK Circle with tail OK 1`] = `
   />
   <div
     className="circle   default"
+    data-testid="circle"
   >
     <p
       className="text text_type_circle text_color_input letter"
@@ -289,6 +301,7 @@ exports[`Circle test OK small Circle OK 1`] = `
   />
   <div
     className="circle  small default"
+    data-testid="smallCircle"
   >
     <p
       className="text text_type_circle text_color_input letter"
