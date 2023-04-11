@@ -68,6 +68,7 @@ export const QueuePage: React.FC = () => {
               disabled={disabledAdd}
               onClick={() => addElement(value)}
               isLoader={loader.add}
+              data-testid='addToQueueButton'
           />
           <Button
               text={'Удалить'}
@@ -75,11 +76,13 @@ export const QueuePage: React.FC = () => {
               disabled={loader.add || data.tail == null}
               onClick={() => deleteElement()}
               isLoader={loader.delete}
+              data-testid='deleteFromQueueButton'
           />
           <Button
               text={'Очистить'}
               disabled={cleared}
               onClick={reset}
+              data-testid='clearQueueButton'
           />
         </div>
         <div className={styles.circlesContainer}>
